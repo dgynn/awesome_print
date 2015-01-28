@@ -8,6 +8,9 @@
 # so do nothing for subsequent requires.
 #
 unless defined?(AwesomePrint::Inspector)
+
+  AWESOME_METHODS = '@__awesome_methods__'.freeze
+
   %w(array string method object class kernel).each do |file|
     require "awesome_print/core_ext/#{file}"
   end
