@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'active_record_helper'
+require 'awesome_print_methods'
 
 RSpec.describe "AwesomePrint/ActiveRecord", skip: ->{ !ExtVerifier.has_rails? }.call do
 

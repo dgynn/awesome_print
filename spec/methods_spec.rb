@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'awesome_print_methods'
 
 RSpec.describe "Single method" do
   before do

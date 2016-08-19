@@ -10,10 +10,11 @@
 unless defined?(AwesomePrint::Inspector)
 
   AWESOME_METHODS = '@__awesome_methods__'.freeze
+  # Note: the awesome_methods extensions are not enabled by default.
+  # they must be manually required with `require 'awesome_print_methods'`
 
-  %w(array string method object class kernel).each do |file|
-    require "awesome_print/core_ext/#{file}"
-  end
+  require 'awesome_print/core_ext/string'
+  require 'awesome_print/core_ext/kernel'
 
   require 'awesome_print/custom_defaults'
   require 'awesome_print/inspector'

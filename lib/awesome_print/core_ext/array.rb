@@ -18,23 +18,20 @@ class Array #:nodoc:
   alias :difference_without_awesome_print :-
   def -(other_ary)
     arr = difference_without_awesome_print(other_ary)
-    awesome_print_sort_array!(arr)
+    if self.instance_variable_defined?(AWESOME_METHODS)
+      arr.instance_variable_set(AWESOME_METHODS, self.instance_variable_get(AWESOME_METHODS))
+    end
+    arr
   end
 
   alias :intersection_without_awesome_print :&
   def &(other_ary)
     arr = intersection_without_awesome_print(other_ary)
-    awesome_print_sort_array!(arr)
-  end
-
-  def awesome_print_sort_array!(arr)
     if self.instance_variable_defined?(AWESOME_METHODS)
       arr.instance_variable_set(AWESOME_METHODS, self.instance_variable_get(AWESOME_METHODS))
-      arr.sort! # { |a, b| a.to_s <=> b.to_s }  # Need the block since Ruby 1.8.x can't sort arrays of symbols.
     end
     arr
   end
-  private :awesome_print_sort_array!
 
   #
   # Intercepting Array#grep needs a special treatment since grep accepts
